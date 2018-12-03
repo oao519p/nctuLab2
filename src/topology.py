@@ -13,19 +13,20 @@ Single switch connected to n hosts.
 '''
 class SingleSwitchTopo(Topo):
     def build(self, n = 2):
-        # Add a switch to a topology
-        s = []
+        # Add switch to a topology
+        s = [] #store all switches
         for i in range(5):
             switch = self.addSwitch('s' + str(i+1) ) 
-            s.append(switch)
-        # Add the host and link to a topology
+            s.append(switch)  #add into the array
+        # Add host to a topology
         h = []
-        for i in range(10):
+        for i in range(10): #same as above
             # Add a host to a topology
             host = self.addHost('h' + str(i+1))
             h.append(host)
 
         # Add a bidirectional link one by one
+        # information from topo2.png
         self.addLink(h[1-1], s[2-1], bw = 14, delay = '5ms', loss = 13)
         self.addLink(h[2-1], s[2-1], bw = 12, delay = '4ms', loss = 15)
         self.addLink(s[1-1], s[2-1], bw = 30, delay = '0.087ms', loss = 3)
@@ -56,10 +57,10 @@ def simpleTest():
     net.start()
     # Test connectivity by trying to have all nodes ping each other
     print("Testing network connectivity")
-    net.pingAll()
     dumpNodeConnections(net.hosts)
     dumpNodeConnections(net.switches)
-    # Stop a network
+    net.pingAll()
+    # Stop a network instead of net.stop()
     CLI(net)
 
 '''
