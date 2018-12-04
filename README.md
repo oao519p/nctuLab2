@@ -39,17 +39,17 @@ screenshot for using iPerf command in Mininet
 * addSwitch(): Add switch to topo
 * addHost(): Add host to topo
 * addLink(node1 , node2, bw=  , delay=  , loss=  ): node2 link with node1 (bidirectional)
-
+---
 * setLogLevel(): Setup loglevel (Convenience function to support lowercase names)
 		 參數: 'info' / 'debug' / 'output'
 
 * dumpNodeConnections(): dump connections to/from a set of nodes
 * pingAll(): Ping between all hosts >> 檢測網路互通性
-
+---
 * start(): Start controller and switches
 * stop(): Stop the controller(s), switches and hosts
 * CLI(Mininet object): Start and run interactive or batch mode CLI
-
+---
 * TClink & OvScontroller for creating Mininet object's parameter
 	
 
@@ -59,7 +59,7 @@ screenshot for using iPerf command in Mininet
 > * Describe the meaning of iPerf command you used in detail
 
 * iPerf is a tool for measuring bandwidth on IP networks
-for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result &" and "h3 iperf -c 10.0.0.6 -u -i 1"
+> for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result & " and "h3 iperf -c 10.0.0.6 -u -i 1"
 * -s: start up with server mode
 * -u: using UDP portocol
 * -i 1: interval time with 1 sec
@@ -73,14 +73,14 @@ for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result &" and "h3 iperf 
 1. **Environment Setup**
  * clone initial repository from github and login to container by SSH
  * run Mininet with OvS's controller ( to support topos )
-	if not using OvS, it will get error .
-	By solving this error, use " service openvswitch-switch start ".
+> if not using OvS, it will get error .
+> By solving this error, use " service openvswitch-switch start ".
 
 
 2. **Example of Mininet**
  * change directory 
  * change the .py into executable mode by " chmod +x example.py "
-	since the data in Mininet have no permission initial.  +x : execute
+> since the data in Mininet have no permission initial.  +x : execute
  * then see the result of creation & connection of 2 hosts and 1 switch.
 ![](https://i.imgur.com/tWRPUTE.png)
 
@@ -137,7 +137,7 @@ for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result &" and "h3 iperf 
 > TODO:
 > * Please replace "YOUR_NAME" and "YOUR_GITHUB_LINK" into yours
 
-* [YOUR_NAME](YOUR_GITHUB_LINK)
+* [吳宜珈](https://github.com/oao519p)
 * [David Lu](https://github.com/yungshenglu)
 
 ---
