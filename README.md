@@ -19,14 +19,13 @@ In this lab, we are going to write a Python program which can generate a network
 > TODO: 
 > * Describe how to execute your program
 > * Show the screenshot of using iPerf command in Mininet
-1. First run the topology.py by [sudo] chmod +x topology.py
-2. then can run by [sudo] ./topology.py
+1. First run the topology.py by " [sudo] chmod +x topology.py "
+2. then can run by " [sudo] ./topology.py "
 3. after running , it will enter to Mininet's CLI mode
 4. use iPerf command to measure the topology 
 
 screenshot for using iPerf command in Mininet
-<img />
-![screenshot] (https://drive.google.com/open?id=1yAu_0BHA_tE3adr6FIT-YQTKl1sJWe-C)
+![](https://i.imgur.com/OUCCGq8.png)
 
 ---
 ## Description
@@ -35,28 +34,30 @@ screenshot for using iPerf command in Mininet
 
 > TODO:
 > * Describe the meaning of Mininet API in Python you used in detail
-# mininet.net - Mininet 
-	* addSwitch
-	* addHost
-	* addLink 
+* Mininet(topo=  , link=  , controller=  ): Create Mininet object
 
-# mininet.topo
+* addSwitch(): Add switch to topo
+* addHost(): Add host to topo
+* addLink(node1 , node2, bw=  , delay=  , loss=  ): node2 link with node1 (bidirectional)
 
-# mininet.node
+* setLogLevel(): Setup loglevel (Convenience function to support lowercase names)
+		 參數: 'info' / 'debug' / 'output'
 
-# mininet.link
+* dumpNodeConnections(): dump connections to/from a set of nodes
+* pingAll(): Ping between all hosts >> 檢測網路互通性
 
-# mininet.util
+* start(): Start controller and switches
+* stop(): Stop the controller(s), switches and hosts
+* CLI(Mininet object): Start and run interactive or batch mode CLI
 
-# mininet.log
-
-# mininet.cli 
-
+* TClink & OvScontroller for creating Mininet object's parameter
+	
 
 ### iPerf Commands
 
 > TODO:
 > * Describe the meaning of iPerf command you used in detail
+
 * iPerf is a tool for measuring bandwidth on IP networks
 for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result &" and "h3 iperf -c 10.0.0.6 -u -i 1"
 * -s: start up with server mode
@@ -70,38 +71,38 @@ for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result &" and "h3 iperf 
 > * Describe how you finish this work step-by-step in detail
 
 1. **Environment Setup**
-> * clone initial repository from github and login to container by SSH
-> * run Mininet with OvS's controller ( to support topos )
+ * clone initial repository from github and login to container by SSH
+ * run Mininet with OvS's controller ( to support topos )
 	if not using OvS, it will get error .
 	By solving this error, use " service openvswitch-switch start ".
 
 
 2. **Example of Mininet**
-> * change directory 
-> * change the .py into executable mode by " chmod +x example.py "
+ * change directory 
+ * change the .py into executable mode by " chmod +x example.py "
 	since the data in Mininet have no permission initial.  +x : execute
-> * then see the result of creation & connection of 2 hosts and 1 switch.
-![](https://drive.google.com/file/d/1pdks2Fk2FKBY3DOsiplF7SpKt3RN_EfG/view?usp=sharing)
+ * then see the result of creation & connection of 2 hosts and 1 switch.
+![](https://i.imgur.com/tWRPUTE.png)
 
 3. **Topology Generator**
-> * view topo2.png
-![topo2](https://drive.google.com/file/d/1sWrVdL4dzJSRS_VLpLO4WMCCHr_F6J1B/view?usp=sharing)
-> * generate topology.py by " touch topology.py " under /src/.
-> * refer to example.py, finish topology.py 
-> * code part:
->> 1. create switches(numbers = 5) and hosts( = 10)
->> 2. construct each links (total 14 links) and set up bandwideth, delay, loss rate
->> 3. define simpleTest() and add two requirement in here
+ * view topo2.png
+![](https://i.imgur.com/mYxXc9R.png)
+ * generate topology.py by " touch topology.py " under /src/.
+ * refer to example.py, finish topology.py 
+ * code part:
+> 1. create switches(numbers = 5) and hosts( = 10)
+> 2. construct each links (total 14 links) and set up bandwideth, delay, loss rate
+> 3. define simpleTest() and add two requirement in here
 		(i) Dump every connections information
 		(ii) Enter CLI mode instead of end the network immediatly
 
 
 4. **Measurement**
-> * change topology.py executable as task 2 done with example.py
-> * execute topology.py
-> * after running , it will autoly enter into Mininet CLI mode 
-> * use iPerf command to test topology.py by " h6 iperf -s -u -i 1 > ./out/result & " and " h3 iperf -c 10.0.0.6 -u -i 1 "
-> * it is success if loss rate is in range 13%~18%.
+ * change topology.py executable as task 2 done with example.py
+ * execute topology.py
+ * after running , it will autoly enter into Mininet CLI mode 
+ * use iPerf command to test topology.py by " h6 iperf -s -u -i 1 > ./out/result & " and " h3 iperf -c 10.0.0.6 -u -i 1 "
+ * it is success if loss rate is in range 13%~18%.
 
 
 ---
@@ -120,6 +121,7 @@ for topo2.png , should use "h6 iperf -s -u -i 1 > ./out/result &" and "h3 iperf 
     * [Hwchiu Learning Note – 手把手打造仿 mininet 網路](https://hwchiu.com/setup-mininet-like-environment.html)
     * [阿寬的實驗室 – Mininet 指令介紹](https://ting-kuan.blog/2017/11/09/%E3%80%90mininet%E6%8C%87%E4%BB%A4%E4%BB%8B%E7%B4%B9%E3%80%91/)
     * [Mininet 學習指南](https://www.sdnlab.com/11495.html)
+    * [MININET部分指令以及其用法总结](https://wenku.baidu.com/view/c942ecb33186bceb19e8bbe8.html)
 * **Python**
     * [Python 2.7.15 Standard Library](https://docs.python.org/2/library/index.html)
     * [Python Tutorial - Tutorialspoint](https://www.tutorialspoint.com/python/)
